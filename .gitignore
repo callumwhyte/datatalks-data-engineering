@@ -1,6 +1,6 @@
 *.parquet
 
 # Credentials - repo-relative (example)
-# /Module 1/Terraform/keys/
+/Module 1/Terraform/keys/
 # Or just a single file:
-/Module 1/Terraform/keys/my-creds.json
+# /Module 1/Terraform/keys/my-creds.json
