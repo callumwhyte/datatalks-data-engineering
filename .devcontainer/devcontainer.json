@@ -1,18 +1,29 @@
 
 {
-  "name": "Codespace with Terraform",
-  "build": {
-    "dockerfile": "Dockerfile",
-    "args": { "VARIANT": "2" }
-  },
+  // Visible name in Codespaces / Dev Containers
+  "name": "Terraform + Git LFS (Ubuntu base)",
+
+  // Clean, minimal base that avoids the Yarn APT key issue you hit
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+
+  // Install Terraform and Git LFS using official Features
   "features": {
-    "ghcr.io/devcontainers/features/terraform:1": {
-      "version": "latest"  // or pin to "1.8.5"
-    }
+    // Terraform CLI (pin "version" if you want e.g. "1.8.5")
+    "ghcr.io/devcontainers/features/terraform:1": { "version": "latest" },
+
+    // Git Large File Storage so pre-push hooks work out of the box
+    "ghcr.io/devcontainers/features/git-lfs:1": {}
   },
+
+  // Optional but handy: Terraform language support in the editor
   "customizations": {
     "vscode": {
-      "extensions": ["hashicorp.terraform"]
+      "extensions": [
+        "hashicorp.terraform"
+      ]
     }
-  }
+  },
+
+  // After the container is created, ensure LFS hooks are initialized for this repo
+  "postCreateCommand": "git lfs install --local || true"
 }
