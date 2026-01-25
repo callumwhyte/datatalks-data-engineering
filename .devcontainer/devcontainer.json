@@ -1,0 +1,39 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/universal
+{
+	"name": "Default Linux Universal",
+	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
+	"image": "mcr.microsoft.com/devcontainers/universal:2-linux",
+
+	// Features to add to the dev container. More info: https://containers.dev/features.
+	
+	"features": {
+		// This pulls the official Terraform Feature and installs Terraform inside the container
+		"ghcr.io/devcontainers/features/terraform:1": {
+		// Use "latest" to always get the newest Terraform, or pin to a version like "1.8.5"
+		"version": "latest"
+		}
+	},
+
+	"customizations": {
+		"vscode": {
+		"extensions": [
+			"hashicorp.terraform"
+		]
+		}
+	}
+	}
+
+
+	// Use 'forwardPorts' to make a list of ports inside the container available locally.
+	// "forwardPorts": [],
+
+	// Use 'postCreateCommand' to run commands after the container is created.
+	// "postCreateCommand": "uname -a",
+
+	// Configure tool-specific properties.
+	// "customizations": {},
+
+	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
+	// "remoteUser": "root"
+
