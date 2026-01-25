@@ -1,2 +1,6 @@
 *.parquet
-/workspaces/datatalks-data-engineering/.github
+
+# Credentials - repo-relative (example)
+# /Module 1/Terraform/keys/
+# Or just a single file:
+/Module 1/Terraform/keys/my-creds.json
