@@ -4,3 +4,4 @@
 /Module 1/Terraform/keys/
 # Or just a single file:
 # /Module 1/Terraform/keys/my-creds.json
+Module 1/pipeline/ny_taxi_postgres_data/
