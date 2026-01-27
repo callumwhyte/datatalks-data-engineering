@@ -1,7 +1,7 @@
 terraform {
   required_providers {
     google = {
-      source = "hashicorp/google"
+      source  = "hashicorp/google"
       version = "7.16.0"
     }
   }
@@ -9,6 +9,7 @@ terraform {
 
 provider "google" {
   # Configuration options
+  credentials = file(var.credentials)
   project     = "de-terraform-485418"
   region      = "europe-west2"
 }
@@ -35,4 +36,9 @@ resource "google_storage_bucket" "demo-bucket" {
       type = "AbortIncompleteMultipartUpload"
     }
   }
+}
+
+resource "google_bigquery_dataset" "demo_dataset" {
+  dataset_id = var.bq_dataset_name
+  location   = var.gcp_region
 }

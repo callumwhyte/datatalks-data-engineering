@@ -1,29 +1,30 @@
-
 {
-  // Visible name in Codespaces / Dev Containers
-  "name": "Terraform + Git LFS (Ubuntu base)",
-
-  // Clean, minimal base that avoids the Yarn APT key issue you hit
+  "name": "Terraform + Git LFS + Docker (Ubuntu base)",
   "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
 
-  // Install Terraform and Git LFS using official Features
   "features": {
-    // Terraform CLI (pin "version" if you want e.g. "1.8.5")
+    // Terraform CLI
     "ghcr.io/devcontainers/features/terraform:1": { "version": "latest" },
 
-    // Git Large File Storage so pre-push hooks work out of the box
-    "ghcr.io/devcontainers/features/git-lfs:1": {}
+    // Git Large File Storage for pre-push hooks
+    "ghcr.io/devcontainers/features/git-lfs:1": {},
+
+    // ✅ Docker CLI + Compose v2 (connects to host daemon)
+    "ghcr.io/devcontainers/features/docker-outside-of-docker:1": {
+      // Optional: pin a CLI version or leave as "latest"
+      "version": "latest"
+    }
   },
 
-  // Optional but handy: Terraform language support in the editor
   "customizations": {
     "vscode": {
       "extensions": [
-        "hashicorp.terraform"
+        "hashicorp.terraform",
+        "ms-azuretools.vscode-docker"
       ]
     }
   },
 
-  // After the container is created, ensure LFS hooks are initialized for this repo
+  // Your repo uses LFS, so make sure hooks are initialized for the workspace
   "postCreateCommand": "git lfs install --local || true"
 }
